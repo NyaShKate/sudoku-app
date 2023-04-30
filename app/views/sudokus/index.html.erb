@@ -1,35 +1,51 @@
 <html>
+<h1>Sudokus#index</h1>
+<p>AAAAAAAAAAAAAAA</p>
+
 <head>
   <style>
     input[type=text] {
-      width: 60%;
+      width: 90%;
       padding: 10px 15px;
       margin: 9px 0;
       box-sizing: border-box;
     }
-
   </style>
 </head>
-<h1>SUDOKU</h1>
-<% sudoku = [[1,0,0,0,0,0,0,0,0],
-             [0,2,0,0,0,0,0,0,0],
-             [0,0,3,0,0,0,0,0,0],
-             [0,0,0,4,0,0,0,0,0],
-             [0,0,0,0,5,0,0,0,0],
-             [0,0,0,0,0,6,0,0,0],
-             [0,0,0,0,0,0,7,0,0],
-             [0,0,0,0,0,0,0,8,0],
-             [0,0,0,0,0,0,0,0,9]] %>
+
+<% sudoku = [[0,0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0,0]]%>
+
+<script>
+  $("auto_generate").on('click', function(){
+    //  здесь должен быть метод на генерацию судоку
+  });
+
+  $("solve").on('click', function(){
+      //тут должно быть авторешение
+  });
+</script>
+
 <div>
-<table style="width:50%">
-  <form method="post">
-  <% for i in 0..8 do %>
-    <tr >
-    <% for j in 0..8 do %>
-      <td style="width:50px"><input type="text" name="<%= i*10+j %>" value="<%= sudoku[i][j]%>"></td>
-    <% end %>
-    </tr>
-  <% end %>
-  </form>
-</table>
+  <table style="width:50%">
+    <form action="/sudokus" method="post" id="form_sudoku">
+      <% for i in 0..8 do %>
+        <tr >
+          <% for j in 0..8 do %>
+            <td style="width:50px"><input type="text" name="<% i*10+j %>" value="<%= sudoku[i][j]%>"></td>
+          <% end %>
+        </tr>
+      <% end %>
+      <tr><td><input type="submit" class="btn" value="Перевірити"></td></tr>
+    </form>
+  </table>
+  <button id="auto_generate">сгенерувати</button>
+  <button id="solve">вирішити</button>
 </div>
