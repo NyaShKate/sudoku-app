@@ -1,80 +1,4 @@
 <<<<<<< Updated upstream
-<html>
-<h1>Sudokus#index</h1>
-<p>AAAAAAAAAAAAAAA</p>
-
-<head>
-  <style>
-    input[type=text] {
-      width: 90%;
-      padding: 10px 15px;
-      margin: 9px 0;
-      box-sizing: border-box;
-    }
-  </style>
-</head>
-
-<%
-<%
-
-  flag = 0
-
-  sudoku = [[0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0]]
-
-  def index
-      for i in 0..8 do
-        for j in 0..8 do
-          if params.has_key?(:s10)
-
-          end
-         end
-       end
-
-  end
-
-
-%>
-<div>
-  <table style="width:50%">
-    <form action="/sudokus/index" method="post">
-      <% for i in 0..8 do %>
-        <tr >
-          <% for j in 0..8 do %>
-            <td style="width:50px"><input type="text" name="s<% i*10+j %>" value="<%= sudoku[i][j]%>"></td>
-          <% end %>
-        </tr>
-      <% end %>
-      <tr><td><input type="submit" class="btn" value="Перевірити"></td></tr>
-    </form>
-  </table>
-</div>
-
-
-<div>
-  <table style="width:50%">
-    <form action="/sudokus" method="post" id="form_sudoku">
-      <% for i in 0..8 do %>
-        <tr >
-          <% for j in 0..8 do %>
-            <td style="width:50px"><input type="text" name="<% i*10+j %>" value="<%= sudoku[i][j]%>"></td>
-          <% end %>
-        </tr>
-      <% end %>
-      <tr><td><input type="submit" class="btn" value="Перевірити"></td></tr>
-    </form>
-  </table>
-  <button id="auto_generate">сгенерувати</button>
-  <button id="solve">вирішити</button>
-</div>
-=======
 <style>
     input[type=text] {
       width: 60%;
@@ -101,4 +25,5 @@
     <input type="submit" class="btn btn-outline-primary" name='solve' value='Auto-solve'/>
   </div>
 </form>
+
 >>>>>>> Stashed changes
