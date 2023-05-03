@@ -1,35 +1,29 @@
-<html>
-<head>
-  <style>
-    input[type=text] {
+<style>
+    input[type=number] {
       width: 60%;
-      padding: 10px 15px;
+      padding: 5px 10px;
       margin: 9px 0;
       box-sizing: border-box;
     }
 
-  </style>
-</head>
-<h1>SUDOKU</h1>
-<% sudoku = [[1,0,0,0,0,0,0,0,0],
-             [0,2,0,0,0,0,0,0,0],
-             [0,0,3,0,0,0,0,0,0],
-             [0,0,0,4,0,0,0,0,0],
-             [0,0,0,0,5,0,0,0,0],
-             [0,0,0,0,0,6,0,0,0],
-             [0,0,0,0,0,0,7,0,0],
-             [0,0,0,0,0,0,0,8,0],
-             [0,0,0,0,0,0,0,0,9]] %>
-<div>
-<table style="width:50%">
-  <form method="post">
-  <% for i in 0..8 do %>
-    <tr >
-    <% for j in 0..8 do %>
-      <td style="width:50px"><input type="text" name="<%= i*10+j %>" value="<%= sudoku[i][j]%>"></td>
-    <% end %>
-    </tr>
-  <% end %>
-  </form>
-</table>
-</div>
+</style>
+<!--<form method="post" action="/" class="p-2">-->
+<h1 class="p-1">SUDOKU</h1>
+<p class="p-1"><%= params[:notice] %></p>
+
+<%= form_with url: "/", method: :post , class: 'p-2' do |form| %>
+    <table style="width:50%">
+      <% (0..8).each do |i|%>
+        <tr>
+        <% (0..8).each do |j| %>
+          <td style="width:50px"><%= form.text_field ('e'+(i*10+j).to_s).parameterize.underscore.to_sym ,value: @sudoku[i][j] , type: 'number', min: '0', max: '9'%></td>
+        <% end %>
+        </tr>
+      <% end %>
+    </table>
+  <div class="p-3">
+    <%=form.submit 'Check', class: "btn btn-outline-primary", name: 'check', formaction: enter_url%>
+    <%=form.submit 'Auto-generate', class: "btn btn-outline-primary" , formaction: gen_url, name: 'gen'%>
+    <%=form.submit 'Auto-solve', class: "btn btn-outline-primary", formaction: solve_url , name: 'solve'%>
+  </div>
+<% end %>
